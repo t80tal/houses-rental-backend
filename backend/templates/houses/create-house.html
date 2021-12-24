@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Add a House</title>
+{% endblock %}
+
+{% block content %}
+<h3 class="text-center display-4">Post a house</h3>
+  <div class="container">
+    <div class="row">
+      <div class="text-danger font-weight-bold">
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row my-5">
+
+      <form method="POST">
+        <div class="mb-3">
+          <input type="text" required class="form-control" name="title" value="{{title}}" placeholder="Title">
+        </div>
+        <div class="mb-3">
+          <input type="text" required placeholder="price" name="price" value="{{price}}" class="form-control">
+        </div>
+        <div class="mb-3">
+          <input type="text" required placeholder="House Address" name="address" value="{{address}}" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="3">{{description}}</textarea>
+          <div id="help" class="form-text">Please provide a complete house description, Advantages and disadvantages.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

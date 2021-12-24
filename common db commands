@@ -1,0 +1,11 @@
+#First Login to postgres account by typing: 
+sudo -u postgres -i
+#Then enter the software by typing:
+psql
+"
+common commands:
+------------
+\l - List the existing databases.
+\c - Use/ Connect into a specific existing database.
+\dt - List available tables.
+"

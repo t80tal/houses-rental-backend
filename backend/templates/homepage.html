@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}<title>Houses Rental System</title>{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-5">Find Houses...</h1><br/>
+      </div>
+        {% if msg %}
+      <div class="badge bg-success text-wrap font-weight-bold" style="font-size: large;">
+          {{msg}}
+    </div><br/>
+      {% endif %}
+    </div>
+    <div class="row">
+{% for house in houses %}
+      <div class="col-lg-4 col-md-3 col-sm-10 mr-auto">
+        {% with obj=house %}{% include "components/card.html" %}{% endwith %}  {% if loop.index %3 %}
+            </div>
+          {% else %}
+            </div></div><br><div class="row">
+          {% endif %}
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  <title>Own Houses</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-5 text-center text-danger mb-3">Own Houses</h1>
+    </div>
+    <div id="result" class="text-danger text-bold lead"></div>
+      {% if msg %}
+      <div class="badge bg-success text-wrap font-weight-bold" style="font-size: large;">
+          {{msg}}
+    </div><br/>
+      {% endif %}
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Address</th>
+            <th scope="col">Description</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Price</th>
+            <th scope="col">Is active</th>
+            <th scope="col">Date Posted</th>
+            <th scope="col" colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for house in houses %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{house.title}}</td>
+                <td>{{house.address}}</td>
+                <td>{{house.description[:60]}}</td>
+                <td>{{house.owner_id}}</td>
+                <td>{{house.price}}</td>
+                <td>{{house.is_active}}</td>
+                <td>{{house.date_post}}</td>
+                <td><button class="btn btn-primary btn-sm" id="{{house.id}}">active</button><script>
+
+                   $( "#{{house.id}}" ).click(function() {$.ajax({
+  url: '/allow/{{house.id}}',
+  type: 'PUT',
+  data: "tmp_code=j5j6kk7j82827475hhf6vdjdjvjhf7j4",
+  success: function(data) {
+    alert(data);
+    window.location.replace("/manage-houses");
+  }
+});});
+                </script></td>
+             </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}

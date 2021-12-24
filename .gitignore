@@ -1,0 +1,10 @@
+__pycache__
+.env
+env
+
+sql_app.db
+test_db.db
+
+.pytest_cach
+htmlcov
+.coverage

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  <title>Logging Out...</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h5 class="display-5">Logging out...</h5>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+
+window.location.replace("/login/");
+
+
+{% endblock %}

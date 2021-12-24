@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}<title>House Detail: </title>{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"><button class="btn btn-secondary" onclick="window.location.href = '/';">Go Back</button>
+</div>
+    {% if account.is_superuser %}
+      {% if house.is_active %}
+     <div class="col-md-1"><button class="btn btn-danger" id="{{house.id}}">Deactive</button>
+</div>
+    <script>
+            $( "#{{house.id}}" ).click(function() {$.ajax({
+  url: '/disable/{{house.id}}',
+  type: 'PUT',
+  data: "tmp_code=j5j6kk7j82827475hhf6vdjdjvjhf7j4",
+  success: function(data) {
+    alert(data);
+    window.location.replace("/");
+  }
+});});
+
+    </script>{% endif %}
+    {% endif %}
+    <div class="col-md-12">
+      <h1 class="display-4 text-danger">House Detail</h1><br/>
+      <table class="table table-striped table-hover">
+          <tbody>
+            <tr>
+              <th scope="row">House Title</th>
+              <td colspan="2">{{house.title}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td colspan="2">{{house.price}}</td>
+            </tr>
+            <tr>
+            <tr>
+              <th scope="row">Address</th>
+              <td colspan="2">{{house.address}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Is active</th>
+              <td colspan="2">{{house.is_active}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Data Published</th>
+              <td colspan="2">{{house.date_post}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Description</th>
+              <td colspan="3"><div>{{house.description}}</div></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

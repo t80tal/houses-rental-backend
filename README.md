@@ -14,10 +14,15 @@ pip install -r ./requirements.txt
 you simply need to create .env file in the backend folder and enter your db details, for example in my case:
 
 POSTGRES_USER=
+
 POSTGRES_DB=
+
 POSTGRES_PASSWORD=
+
 POSTGRES_SERVER=localhost
+
 POSTGRES_PORT=5432
+
 SECRET_KEY=
 
 
